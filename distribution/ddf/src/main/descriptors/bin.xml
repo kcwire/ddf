@@ -23,6 +23,6 @@
     <componentDescriptors>
         <componentDescriptor>target/dependencies/common-bin.xml</componentDescriptor>
     </componentDescriptors>
-    
+
   
 </assembly>

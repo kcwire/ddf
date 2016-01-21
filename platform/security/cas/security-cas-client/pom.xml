@@ -108,8 +108,8 @@
                         </Export-Package>
                         <Import-Package>
                             ddf.security.sts.client.configuration;version="[2.4,3)",
-                            javax.servlet;version="[2.5.0,3.0.0)",
-                            javax.servlet.http,
+                            javax.servlet;version="[3.1.0,4.0.0)",
+                            javax.servlet.http;version="[3.1.0,4.0.0)",
                             org.codice.ddf.security.handler.api;version="[2.4,3)",
                             org.jasig.cas.client.authentication,
                             org.jasig.cas.client.proxy,

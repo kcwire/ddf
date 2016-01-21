@@ -29,7 +29,7 @@ import org.codice.ddf.configuration.PropertyResolver;
 import org.codice.ddf.security.policy.context.ContextPolicy;
 import org.codice.ddf.security.policy.context.ContextPolicyManager;
 import org.codice.ddf.security.policy.context.attributes.ContextAttributeMapping;
-import org.codice.ddf.security.policy.context.attributes.DefaultContextAttributeMapping;
+import org.codice.ddf.security.policy.context.attributes.impl.DefaultContextAttributeMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

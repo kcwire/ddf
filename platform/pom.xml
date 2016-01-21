@@ -322,7 +322,6 @@
         <module>persistence</module>
         <module>notifications</module>
         <module>mime</module>
-        <module>metrics</module>
         <module>platform-scheduler</module>
         <module>security</module>
         <module>platform-commands</module>
@@ -330,6 +329,7 @@
         <module>error</module>
         <module>platform-http-proxy</module>
         <module>admin</module>
+        <module>metrics</module>
         <module>branding-resources</module>
         <module>landing-page</module>
         <module>platform-app</module>

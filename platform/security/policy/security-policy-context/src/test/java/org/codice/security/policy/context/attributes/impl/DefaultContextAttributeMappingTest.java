@@ -11,13 +11,13 @@
  * is distributed along with this program and can be found at
  * <http://www.gnu.org/licenses/lgpl.html>.
  */
-package org.codice.security.policy.context.attributes;
+package org.codice.security.policy.context.attributes.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.codice.ddf.security.policy.context.attributes.DefaultContextAttributeMapping;
+import org.codice.ddf.security.policy.context.attributes.impl.DefaultContextAttributeMapping;
 import org.junit.Before;
 import org.junit.Test;
 

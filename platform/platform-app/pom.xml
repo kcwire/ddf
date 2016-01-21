@@ -394,6 +394,7 @@
         <org.ops4j.pax.swissbox.version>1.8.0</org.ops4j.pax.swissbox.version>
         <saxon.version>9.6.0-4</saxon.version>
         <saxon.bundle.plugin>${saxon.version}_1</saxon.bundle.plugin>
+        <spring.osgi.version>1.2.1</spring.osgi.version>
     </properties>
     <build>
         <plugins>
@@ -454,8 +455,6 @@
                         <configuration>
                             <resourcesDir>${project.build.directory}/resources</resourcesDir>
                             <featuresFile>${basedir}/target/classes/features.xml</featuresFile>
-                            <!-- See https://issues.apache.org/jira/browse/KARAF-2357 for details on this setting -->
-                            <ignoreDependencyFlag>true</ignoreDependencyFlag>
                         </configuration>
                     </execution>
                 </executions>

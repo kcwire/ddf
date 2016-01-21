@@ -92,8 +92,8 @@
                 <configuration>
                     <instructions>
                         <Import-Package>
-                            javax.servlet;version="[2.5,3)",
-                            javax.servlet.http;version="[2.5,3)",
+                            javax.servlet;version="[3.1.0,4.0.0)",
+                            javax.servlet.http;version="[3.1.0,4.0.0)",
                             org.apache.felix.webconsole;version="[3.1,5)",
                             !org.abego.treelayout.*,
                             *

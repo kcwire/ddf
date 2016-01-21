@@ -85,7 +85,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Embed-Dependency>type-parser,org.apache.felix.utils</Embed-Dependency>
+                        <Embed-Dependency>type-parser,org.apache.felix.utils,json-simple</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>

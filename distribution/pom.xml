@@ -23,8 +23,9 @@
     <packaging>pom</packaging>
     <name>DDF Distribution</name>
     <properties>
-        <pax.web.version>3.2.4</pax.web.version>
-        <pax.cdi.version>0.11.0</pax.cdi.version>
+        <pax.web.version>4.2.4</pax.web.version>
+        <pax.cdi.version>0.12.0</pax.cdi.version>
+        <pax.jdbc.version>0.7.0</pax.jdbc.version>
         <sitename.default>ddf.distribution</sitename.default>
     </properties>
     <modules>

@@ -11,18 +11,22 @@
  *
  **/
 -->
-<features name="${project.artifactId}-${project.version}">
+<features name="${project.artifactId}-${project.version}"
+          xmlns="http://karaf.apache.org/xmlns/features/v1.3.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
 
-    <feature name="security-handler-api" install="manual" version="${project.version}"
-             description="API for authentication handlers for web applications.">
-        <bundle>mvn:ddf.security.handler/security-handler-api/${project.version}</bundle>
-    </feature>
+    <!--<feature name="security-handler-api" install="manual" version="${project.version}"-->
+             <!--description="API for authentication handlers for web applications.">-->
+        <!--<bundle>mvn:ddf.security.handler/security-handler-api/${project.version}</bundle>-->
+    <!--</feature>-->
 
     <feature name="security-core" install="manual" version="${project.version}"
              description="DDF Security Core">
-        <feature>security-core-api</feature>
-        <feature>security-handler-api</feature>
-        <bundle>mvn:ddf.security.expansion/security-expansion-api/${project.version}</bundle>
+        <feature prerequisite="true">security-core-api</feature>
+        <feature prerequisite="true">security-apis</feature>
+        <!--<feature>security-handler-api</feature>-->
+        <!--<bundle>mvn:ddf.security.expansion/security-expansion-api/${project.version}</bundle>-->
         <bundle>mvn:ddf.security.core/security-core-impl/${project.version}</bundle>
     </feature>
 
@@ -81,9 +85,10 @@
         <configfile finalname="/etc/ws-security/attributeMap.properties">
             mvn:ddf.security.sts/security-sts-ldapclaimshandler/${project.version}/properties/attributeMap
         </configfile>
-        <feature>cxf-core</feature>
-        <feature>cxf-ws-security</feature>
-        <feature>spring-tx</feature>
+        <feature prerequisite="true">cxf-core</feature>
+        <feature prerequisite="true">cxf-ws-security</feature>
+        <feature prerequisite="true">spring-tx</feature>
+        <feature prerequisite="true">cxf-jaxws</feature>
         <feature>security-sts-propertyclaimshandler</feature>
         <bundle>mvn:ddf.security.sts/security-sts-server/${project.version}</bundle>
         <bundle dependency="true">
@@ -95,6 +100,7 @@
         <bundle dependency="true">
             mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.oro/2.0.8_6
         </bundle>
+        <feature prerequisite="true">wrap</feature>
         <bundle>wrap:mvn:org.springframework.ldap/spring-ldap-core/1.3.2.RELEASE</bundle>
         <bundle>mvn:org.apache.commons/commons-jexl/2.1.1</bundle>
         <bundle>mvn:org.ops4j.pax.url/pax-url-classpath/1.3.7</bundle>
@@ -118,39 +124,6 @@
     <feature name="security-sts-ldapclaimshandler" install="manual" version="${project.version}"
              description="Retrieves claims attributes from an LDAP store.">
         <bundle>mvn:ddf.security.sts/security-sts-ldapclaimshandler/${project.version}</bundle>
-    </feature>
-
-    <feature name="security-admin-module" install="manual" version="${project.version}"
-             description="Security configuration module.">
-        <bundle>mvn:ddf.security.admin/security-admin-module/${project.version}</bundle>
-    </feature>
-
-    <feature name="security-services-app" install="auto" version="${project.version}"
-             description="The Security Application provides Authentication, Authorization, and Auditing services for the DDF.\nThey comprise both a framework that developers and integrators can extend and also a reference implementation that can be used which meets security requirements.::DDF Security">
-        <feature>platform-app</feature>
-        <!-- enable this feature once there is actually some configuration in it -->
-        <!--<feature>security-admin-module</feature>-->
-        <feature>security-core</feature>
-        <feature>security-policy-context</feature>
-        <feature>security-web-sso-defaults</feature>
-        <feature>security-interceptor-guest-wrapper</feature>
-        <feature>security-guest</feature>
-        <feature>security-certificate</feature>
-    </feature>
-
-    <feature name="security-web-sso-defaults" install="manual" version="${project.version}"
-             description="Installs the default features needed for web-based SSO authentication.">
-        <feature>security-sts-server</feature>
-        <feature>security-filter-web-sso</feature>
-        <feature>security-filter-login</feature>
-        <feature>security-handler-saml</feature>
-        <feature>security-handler-basic</feature>
-        <feature>security-handler-pki</feature>
-        <feature>security-sts-upbstvalidator</feature>
-        <feature>security-filter-authz</feature>
-        <feature>security-pdp-java</feature>
-        <feature>security-servlet-logout</feature>
-        <feature>security-sts-realm</feature>
     </feature>
 
     <feature name="security-handler-basic" install="manual" version="${project.version}"
@@ -244,10 +217,7 @@
         <bundle>
             mvn:ddf.security.certificate/security-certificate-keystoreeditor/${project.version}
         </bundle>
-        <bundle>mvn:ddf.security.certificate/security-certificate-adminmodule/${project.version}
-        </bundle>
-        <bundle>mvn:ddf.security.certificate/security-certificate-generator/${project.version}
-        </bundle>
+        <feature>security-certificate-generator</feature>
     </feature>
     <feature name="security-certificate-generator" install="manual"
              version="${project.version}"
@@ -258,6 +228,7 @@
 
     <feature name="security-guest" install="manual" version="${project.version}"
              description="Contains all of the guest security features.">
+        <feature prerequisite="true">security-handler-basic</feature>
         <feature>security-handler-guest</feature>
         <feature>security-sts-guestvalidator</feature>
         <feature>security-sts-guestclaimshandler</feature>
@@ -273,6 +244,41 @@
              description="IDP server and client">
         <bundle>mvn:ddf.security.idp/security-idp-client/${project.version}</bundle>
         <bundle>mvn:ddf.security.idp/security-idp-server/${project.version}</bundle>
+    </feature>
+
+    <feature name="security-apis" install="manual" version="${project.version}"
+             description="All of the Security API bundles included in 1 feature.">
+        <bundle>mvn:ddf.security.handler/security-handler-api/${project.version}</bundle>
+        <bundle>mvn:ddf.security.expansion/security-expansion-api/${project.version}</bundle>
+        <bundle>mvn:ddf.security.policy/security-policy-api/${project.version}</bundle>
+    </feature>
+
+    <feature name="security-services-app" install="auto" version="${project.version}"
+             description="The Security Application provides Authentication, Authorization, and Auditing services for the DDF.\nThey comprise both a framework that developers and integrators can extend and also a reference implementation that can be used which meets security requirements.::DDF Security">
+        <feature prerequisite="true">platform-app</feature>
+        <feature prerequisite="true">security-apis</feature>
+        <feature>security-policy-context</feature>
+        <!-- TODO - fix circular dependency on sts-realm & core -->
+        <feature>security-sts-realm</feature>
+        <feature>security-core</feature>
+        <feature>security-web-sso-defaults</feature>
+        <feature>security-interceptor-guest-wrapper</feature>
+        <feature>security-guest</feature>
+        <feature>security-certificate</feature>
+    </feature>
+
+    <feature name="security-web-sso-defaults" install="manual" version="${project.version}"
+             description="Installs the default features needed for web-based SSO authentication.">
+        <feature prerequisite="true">security-handler-pki</feature>
+        <feature prerequisite="true">security-sts-server</feature>
+        <feature>security-filter-web-sso</feature>
+        <feature>security-filter-login</feature>
+        <feature>security-handler-saml</feature>
+        <feature>security-handler-basic</feature>
+        <feature>security-sts-upbstvalidator</feature>
+        <feature>security-filter-authz</feature>
+        <feature>security-pdp-java</feature>
+        <feature>security-servlet-logout</feature>
     </feature>
 
 </features>

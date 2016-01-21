@@ -11,9 +11,11 @@
  * is distributed along with this program and can be found at
  * <http://www.gnu.org/licenses/lgpl.html>.
  */
-package org.codice.ddf.security.policy.context.attributes;
+package org.codice.ddf.security.policy.context.attributes.impl;
 
 import java.util.Arrays;
+
+import org.codice.ddf.security.policy.context.attributes.ContextAttributeMapping;
 
 import ddf.security.permission.KeyValuePermission;
 

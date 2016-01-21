@@ -83,6 +83,7 @@
                         <Embed-Dependency>json-smart,common-system,org.apache.felix.utils,commons-lang3,branding-resources</Embed-Dependency>
                         <Import-Package>
                             org.apache.felix.webconsole;version="[3.1,5)",
+                            org.apache.cxf.jaxrs,
                             *
                         </Import-Package>
                     </instructions>

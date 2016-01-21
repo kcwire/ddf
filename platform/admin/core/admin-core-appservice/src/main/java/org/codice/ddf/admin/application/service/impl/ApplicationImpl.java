@@ -1,10 +1,10 @@
 /**
  * Copyright (c) Codice Foundation
- * <p/>
+ * <p>
  * This is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser
  * General Public License as published by the Free Software Foundation, either version 3 of the
  * License, or any later version.
- * <p/>
+ * <p>
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details. A copy of the GNU Lesser General Public License
@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.karaf.features.BundleInfo;
 import org.apache.karaf.features.Feature;
 import org.apache.karaf.features.Repository;
@@ -72,7 +73,8 @@ public class ApplicationImpl implements Application, Comparable<Application> {
         }
         List<Feature> autoFeatures = new ArrayList<>();
         for (Feature curFeature : features) {
-            if (curFeature.getInstall().equalsIgnoreCase(Feature.DEFAULT_INSTALL_MODE)) {
+            if (StringUtils.equalsIgnoreCase(Feature.DEFAULT_INSTALL_MODE,
+                    curFeature.getInstall())) {
                 autoFeatures.add(curFeature);
             }
         }
@@ -91,7 +93,8 @@ public class ApplicationImpl implements Application, Comparable<Application> {
                 }
                 logger.debug(
                         "Could not determine main feature in {}, using defaults. Each application should have only 1 auto install feature but {} were found in this application.",
-                        repo.getName(), autoFeatures.size());
+                        repo.getName(),
+                        autoFeatures.size());
                 name = repo.getName();
                 version = "0.0.0";
             } catch (IOException e) {
@@ -148,7 +151,8 @@ public class ApplicationImpl implements Application, Comparable<Application> {
 
     @Override
     public int hashCode() {
-        return name.concat(version).hashCode();
+        return name.concat(version)
+                .hashCode();
     }
 
     @Override
@@ -186,7 +190,8 @@ public class ApplicationImpl implements Application, Comparable<Application> {
 
         @Override
         public int compare(BundleInfo bundle1, BundleInfo bundle2) {
-            return bundle1.getLocation().compareTo(bundle2.getLocation());
+            return bundle1.getLocation()
+                    .compareTo(bundle2.getLocation());
         }
 
     }

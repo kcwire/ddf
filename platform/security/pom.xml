@@ -227,7 +227,6 @@
         <module>servlet</module>
         <module>interceptor</module>
         <module>certificate</module>
-        <module>security-admin-module</module>
         <module>idp</module>
         <module>rest</module>
         <module>security-services-app</module>

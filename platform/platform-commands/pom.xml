@@ -20,7 +20,7 @@
         <version>2.9.0-SNAPSHOT</version>
     </parent>
     <artifactId>platform-commands</artifactId>
-    <name>DDF Platform Commands</name>
+    <name>DDF :: Platform :: Commands</name>
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>

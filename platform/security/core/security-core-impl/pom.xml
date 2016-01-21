@@ -227,7 +227,7 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Import-Package>
-                            javax.servlet.http; version="[2.5.0,3.0.0)",
+                            javax.servlet.http; version="[3.1.0,4.0.0)",
                             <!--
                             Needed because API versioned independently of
                             the project their code is in, hence the version

@@ -16,51 +16,42 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.3.0 http://karaf.apache.org/xmlns/features/v1.3.0">
 
-    <repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
-    <repository>mvn:org.apache.karaf.features/spring/${karaf.version}/xml/features</repository>
     <repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+    <repository>mvn:org.apache.karaf.features/framework/${karaf.version}/xml/features</repository>
 
-    <feature name="kernel-webconsole" description="DDF Kernel-customized karaf webconsole"
-             version="${project.version}">
-        <feature>webconsole</feature>
-        <!--
-        <feature>http</feature>
-        <feature>aries-blueprint</feature>
-        <feature>jaas</feature>
-        <bundle start-level="30">
-            mvn:org.apache.felix/org.apache.felix.metatype/1.0.12
-        </bundle>
-        <bundle start-level="30">
-            mvn:org.apache.karaf.webconsole/org.apache.karaf.webconsole.console/${karaf.version}
-        </bundle>
-        <conditional>
-            <condition>features</condition>
-            <bundle start-level="30">
-                mvn:org.apache.karaf.webconsole/org.apache.karaf.webconsole.features/${karaf.version}
-            </bundle>
-        </conditional>
-        <conditional>
-            <condition>shell</condition>
-            <bundle start-level="30">
-                mvn:org.apache.karaf.webconsole/org.apache.karaf.webconsole.gogo/${karaf.version}
-            </bundle>
-        </conditional>
-        <conditional>
-            <condition>eventadmin</condition>
-            <bundle start-level="30">
-                mvn:org.apache.felix/org.apache.felix.webconsole.plugins.event/1.1.0
-            </bundle>
-        </conditional>
-        <conditional>
-            <condition>scr</condition>
-            <bundle start-level="30">
-                mvn:org.apache.felix/org.apache.felix.webconsole.plugins.ds/1.0.0
-            </bundle>
-        </conditional>
-        -->
+    <feature name="kernel" version="${project.version}">
+        <feature version="${karaf.version}">framework</feature>
+        <!-- Karaf forgot to list the version for wrap -->
+        <feature>wrap</feature>
+        <feature version="${karaf.version}">aries-blueprint</feature>
+        <feature version="${karaf.version}">shell</feature>
+        <feature version="${karaf.version}">shell-compat</feature>
+        <feature version="${karaf.version}">feature</feature>
+        <feature version="${karaf.version}">jaas</feature>
+        <feature version="${karaf.version}">ssh</feature>
+        <feature version="${karaf.version}">management</feature>
+        <feature version="${karaf.version}">bundle</feature>
+        <feature version="${karaf.version}">config</feature>
+        <feature version="${karaf.version}">deployer</feature>
+        <feature version="${karaf.version}">diagnostic</feature>
+        <feature version="${karaf.version}">feature</feature>
+        <feature version="${karaf.version}">instance</feature>
+        <feature version="${karaf.version}">kar</feature>
+        <feature version="${karaf.version}">log</feature>
+        <feature version="${karaf.version}">package</feature>
+        <feature version="${karaf.version}">service</feature>
+        <feature version="${karaf.version}">system</feature>
+        <capability>kernel</capability>
     </feature>
 
-    <feature name="kernel-webconsolebranding" description="" version="${project.version}">
+    <feature name="kernel-webconsole" version="${project.version}">
+        <feature version="${project.version}" prerequisite="true">kernel</feature>
+        <feature version="${karaf.version}" prerequisite="true">webconsole</feature>
+    </feature>
+
+    <feature name="kernel-webconsolebranding" description="DDF Kernel-customized karaf webconsole"
+             version="${project.version}">
+        <feature version="${project.version}" prerequisite="true">kernel-webconsole</feature>
         <bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle>mvn:ddf.distribution/webconsole-branding/${project.version}</bundle>
         <bundle>mvn:ddf.distribution/webconsole-branding-plugin/${project.version}</bundle>

@@ -16,7 +16,7 @@ package org.codice.ddf.commands.platform;
 import java.nio.file.Path;
 import java.util.Collection;
 
-import org.apache.felix.gogo.commands.Command;
+import org.apache.karaf.shell.api.action.Command;
 import org.codice.ddf.configuration.migration.ConfigurationMigrationService;
 import org.codice.ddf.configuration.status.MigrationWarning;
 

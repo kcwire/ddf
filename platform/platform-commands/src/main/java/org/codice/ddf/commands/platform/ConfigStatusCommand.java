@@ -20,7 +20,7 @@ import java.util.Collection;
 
 import javax.validation.constraints.NotNull;
 
-import org.apache.felix.gogo.commands.Command;
+import org.apache.karaf.shell.api.action.Command;
 import org.codice.ddf.configuration.status.ConfigurationStatusService;
 import org.codice.ddf.configuration.status.MigrationWarning;
 

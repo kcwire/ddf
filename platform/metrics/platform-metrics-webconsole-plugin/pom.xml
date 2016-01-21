@@ -86,8 +86,8 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>joda-time,common-system,platform-util</Embed-Dependency>
                         <Import-Package>
-                            javax.servlet;version="[2.5,3)",
-                            javax.servlet.http;version="[2.5,3)",
+                            javax.servlet;version="[3.1.0,4.0.0)",
+                            javax.servlet.http;version="[3.1.0,4.0.0)",
                             org.apache.felix.webconsole; version="[3.1.0,4.0.0)",
                             org.joda.convert;resolution:=optional,
                             *
